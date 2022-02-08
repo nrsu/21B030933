@@ -1,0 +1,5 @@
+a=int(input())
+n=map(int, input().split())
+l=list(n)
+l=sorted(l)
+print(l[a-2]*l[a-1])
