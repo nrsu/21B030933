@@ -77,6 +77,8 @@ movies = [
 "category": "Romance"
 }
 ]
-for m in movies:
-    if m["imdb"]>5.5:
-        print(m["name"])
+def name():
+    for m in movies:
+        if m["imdb"]>5.5:
+            print(m["name"])
+name()
