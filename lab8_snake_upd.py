@@ -45,24 +45,26 @@ while run==True:
         y+=dy*size
         snake.append((x, y))
         snake=snake[-length:]
-    if timerbool==True:
-        timer+=1
-    else:
-        timer=0
+    
+    timer+=1
     if timer%60==0:
+        #print(type(snake))
+        #print(type(apple))
         applepos.append(apple)
-        #print(len(applepos)-1)
         if (len(applepos)-1)%10==0:
             if len(set(applepos))==2:
                 apple=randrange(size, widlen-size, size), randrange(size, widlen-size, size)
                 applepos.clear()
                 applepos.append((1, 1))
+            else:
+                applepos.clear()
+                applepos.append((1, 1))
+    if snake[-1]!=apple:
+        for i in snake:
+            if i==apple:
+                apple=randrange(size, widlen-size, size), randrange(size, widlen-size, size)
     if snake[-1]==apple:
         apple=randrange(size, widlen-size, size), randrange(size, widlen-size, size)
-        for i in snake:
-            if i == apple:
-                while i==apple:
-                    apple=randrange(size, widlen-size, size), randrange(size, widlen-size, size)
         applecount+=1
         if applecount<5:
             score+=1
