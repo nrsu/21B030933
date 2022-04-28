@@ -90,6 +90,16 @@ def main():
                 isMouseDown = False
                 size_of_rect = (abs(currentX - prevX), abs(currentY - prevY))
                 screen.blit(baseLayer, (0, 0))
+                cor=prevX-currentX
+                cor1=prevY-currentY
+                if cor>0 and cor1>0:
+                    pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(currentX, currentY, size_of_rect[0], size_of_rect[1]))
+                if cor<0 and cor1<0:
+                    pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(prevX, prevY, size_of_rect[0], size_of_rect[1]))
+                if cor<0 and cor1>0:
+                    pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(currentX-size_of_rect[0], currentY, size_of_rect[0], size_of_rect[1]))
+                if cor>0 and cor1<0:
+                    pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(prevX-size_of_rect[0], prevY, size_of_rect[0], size_of_rect[1]))
                 pygame.display.flip()
                 
             if event.type == pygame.MOUSEMOTION:
@@ -101,6 +111,7 @@ def main():
             if isMouseDown and prevX != -1 and prevY != -1 and currentX != -1 and currentY != -1:
                 screen.blit(baseLayer, (0, 0))
                 r = calculateRect(prevX, prevY, currentX, currentY)
+
                 pygame.draw.rect(screen, (255,255, 255),pygame.Rect(r), 1)
         if d['line'] == 1:#debug
             if event.type == pygame.MOUSEBUTTONDOWN:
